@@ -5,7 +5,8 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-
+axios.defaults.baseURL = '/api'
+axios.defaults.timeout = 8000
 axios.interceptors.response.use(function (response) {
   // 后端返回的数据，会被axios包装成下面的样子
   // response = {data: { status: xx, data: [], msg: xx }, ... }
@@ -19,7 +20,7 @@ axios.interceptors.response.use(function (response) {
   } else {
     alert(res.msg);
   }
-}, function () {})
+})
 
 
 Vue.use(VueAxios, axios)
